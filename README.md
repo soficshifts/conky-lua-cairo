@@ -14,12 +14,32 @@ They use the "Liberation Sans" font.  Given the nightmare of Linux and Fonts (or
 
 They are free to use, or review for inspiration for your own projects, or just brush up on your rotational geometry and linear transformation skills.  Please don't exepect any support, they are for people who can use Conky; understand programming; along with the maths involed in graphics programming.
 
-All will appear in the bottom left of your screen, this is my "wildcard" space where I run the Conky I feel like.  The `toggleconky.sh` script is a utility script that takes the name of the Conky configuration file as a parameter and 
+## Running
+
+You can run these by providing Conky with the `.conf` file.  e.g. in the directory where you have put the config files (or provide the full path)
+
+```
+conky -c ./analog_clock_big.conf
+```
+
+All will appear in the bottom left of your screen, this is my "wildcard" space where I run the Conky I feel like.  
+
+The `toggleconky.sh` script is a utility script that takes the name of the Conky configuration file as a parameter and 
 
 1. If the Conky is running, it kills it.
 2. If the Conky is not running, it starts it.
 
-Great script for your keybindings as you can assign different keybinding to have different Conky's appear.  Also useful when debugging Lua, and it starts spaffing all sorts of errors on your terminal.
+Great script for your keybindings as you can assign different keybinding to have different Conky's appear.  To use, you'll need to make executable and modify the path to where you put the config files.
+
+```bash
+if [ -z "$PID" ]; then
+	#echo 'not found...start'
+	## CHANGE THIS !!
+	conky -c /path/to/config/directory/$CONFIG
+#and so on
+```
+
+Also useful when debugging Lua, and it starts spaffing all sorts of errors on your terminal.  You'll need to make the script executable and can then use it to launch your conky.
 
 ## General Notes
 
@@ -27,7 +47,6 @@ Great script for your keybindings as you can assign different keybinding to have
 - I don't believe these have too much overhead, but you're mileage may vary.  I don't vouch for efficiency.  They work for me, and I don't have a powerful CPU or graphics.
 - Once again, these are free and open source (MIT License).  Note the libraries and utilities are under different Licenses.
 - No support is offered; they work for me.  Suggestions or pull requests are welcome.
-
 
 ## Clocks
 

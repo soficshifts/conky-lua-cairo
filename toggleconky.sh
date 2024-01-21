@@ -38,7 +38,8 @@ PID=`ps -ef | grep -v -P 'grep|toggleconky' | grep -o -P $REGEX  | awk '{print $
 #chedk if PID, if not, we start, otherwise, kill
 if [ -z "$PID" ]; then
 	#echo 'not found...start'
-	conky -c /home/jsamuel/.config/conky/$CONFIG
+	## CHANGE THIS !!
+	conky -c /path/to/config/directory/$CONFIG
 else
 	#echo 'found, kill'	
 	kill -9 $PID
