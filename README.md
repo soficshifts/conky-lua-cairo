@@ -4,17 +4,22 @@ Welcome to my sample [Conky](https://github.com/brndnmtthws/conky), [Lua](https:
 
 If you love the eye candy Conky offers for your desktop, and refuse to move to Wayland until Conky works properly in it, you've come to the right place.
 
-These scripts are ones I built for fun and to remind myself of all the math involed in graphics programming.
+These scripts are ones I built for fun and to remind myself of all the math involed in graphics programming.  These include
 
-I experimented with clocks, both analoge and digital ones using Lua scripting and the Cairo graphics library.
+1. [Clocks](./README.md#clocks) - various clocks documented below.
+2. [Dials](./README-DIALS.md) - a library and demo on a round dial for a retro looking guage (documented separately).  This is for more advanced use.
 
-All of these are available in most Linux distros, so consult your disto docs or forums on how to install them.
+Conky, Lua, and Ciaro are available in most Linux distros, so consult your disto docs or forums on how to install them.  Conky is a native X application, it does *not* work well in Wayland without doing some work, which I cannot describe as I don't use Wayland.  So many "standard" Linux Window Environments such as Gnome and KDE will need further configuration to make them look nice.
+
+I have tested on both Garuada Linux on an x86 and Debian (Raspberry Pi OS) on a Raspberry Pi 3 and 4; all running the [i3](https://i3wm.org/) window manager.
 
 They use the "Liberation Sans" font.  Given the nightmare of Linux and Fonts (or just fonts in general), I cannot guarantee you have that font.  So if you get missing font errors, try to find a font that works for you.
 
-They are free to use, or review for inspiration for your own projects, or just brush up on your rotational geometry and linear transformation skills.  Please don't exepect any support, they are for people who can use Conky; understand programming; along with the maths involed in graphics programming.
+They are free to use, or review for inspiration for your own projects, or just brush up on your rotational geometry and linear transformation skills.  Please don't expect any support, they are for people who can use Conky; understand programming; along with the maths involed in graphics programming.
 
 ## Running
+
+First, *make sure you change `.conf` conky file's `lua_load` property to the absolute path to the lua script.*
 
 You can run these by providing Conky with the `.conf` file.  e.g. in the directory where you have put the config files (or provide the full path)
 
@@ -22,14 +27,16 @@ You can run these by providing Conky with the `.conf` file.  e.g. in the directo
 conky -c ./analog_clock_big.conf
 ```
 
-All will appear in the bottom left of your screen, this is my "wildcard" space where I run the Conky I feel like.  
+All will appear in the bottom right of your screen, this is my "wildcard" space where I run the Conky I feel like.  
+
+### `toggleconky.sh` Utility Bash Script
 
 The `toggleconky.sh` script is a utility script that takes the name of the Conky configuration file as a parameter and 
 
 1. If the Conky is running, it kills it.
 2. If the Conky is not running, it starts it.
 
-Great script for your keybindings as you can assign different keybinding to have different Conky's appear.  To use, you'll need to make executable and modify the path to where you put the config files.
+Great script for your keybindings as you can assign different keybinding to start/stop different Conky's.  To use, you'll need to make executable and modify the path to where you put the config files.
 
 ```bash
 if [ -z "$PID" ]; then
@@ -45,10 +52,12 @@ Also useful when debugging Lua, and it starts spaffing all sorts of errors on yo
 
 - I like dark desktop backgrounds, so the colours are optimised for that.  I never took the time perfecting colours, but you can change the colours if you wish.  Instructions show you where.
 - I don't believe these have too much overhead, but you're mileage may vary.  I don't vouch for efficiency.  They work for me, and I don't have a powerful CPU or graphics.
-- Once again, these are free and open source (MIT License).  Note the libraries and utilities are under different Licenses.
+- Once again, these are free and open source (MIT License).  Note Conky, Lua, Ciaro may be under different Licenses.
 - No support is offered; they work for me.  Suggestions or pull requests are welcome.
 
 ## Clocks
+
+I experimented with clocks, both analoge and digital ones using Lua scripting and the Cairo graphics library.
 
 Since we need to work with milliseconds, the Lua scripts require the "socket" library.  Again, you'll need to explicity install it from your distro, if it was not included.
 
