@@ -19,6 +19,7 @@ The Library offers two different types of dials, with support for as many "needl
 ![RDBDial Screenshot](./images/RGBDial.png)
 
 `HSVDIAL` is a class that provides a dial with a gradient by providing a base hue, saturation, and volume: the volume is then varied to create a "light to dark" dial; great for percentage scales.
+
 ![HSVDial Screenshot](./images/HSVDial.png)
 
 For all dials, the text placement of readings is up to you (but the demo script shows you a way).
