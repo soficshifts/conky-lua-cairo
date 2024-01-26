@@ -26,29 +26,29 @@ require 'cairo'
 --declare an object with properties of the dial.
 
 RGBDial = {radius = 100,
-    -- lenght of tick
-    tickLength = 10,
-    tickWidth = 3,
-    -- Font face for text stops
-    fontFace = "Liberation Serif",
-    -- Font size for text stops
-    fontSize = 18,
-    -- Width of the arc
-    lineWidth = 14,
-    -- alpha parameter
-    alpha = 0.4,
-    -- largest number for the dial (integer)
-    maxNum = 50,
+	-- lenght of tick
+	tickLength = 10,
+	tickWidth = 3,
+	-- Font face for text stops
+	fontFace = "Liberation Serif",
+	-- Font size for text stops
+	fontSize = 18,
+	-- Width of the arc
+	lineWidth = 14,
+	-- alpha parameter
+	alpha = 0.4,
+	-- largest number for the dial (integer)
+	maxNum = 50,
 	-- smallest number on the dial (integer)
 	minNum = 0,
-    -- colour of background with alpha transparancy
-    backgroundrgba = {0,0,0,0.3},
-    -- 11 stops supported for 10 text stops, red, green, blue values for each stop
-    redStops =  {0,0, 0, 0, 76/255, 230/255, 187/255, 1, 1, 204/255, 128/255},
-    greenStops = {51/255, 134/255, 179/255, 179/255, 230/255, 230/255, 153/255, 153/255, 102/255, 0, 0},
-    blueStops = {153/55, 179/255, 179/255, 0, 0, 0, 0, 51/255, 0, 0, 0 },
-    -- hard stops or gradient
-    useGradientStops = true    
+	-- colour of background with alpha transparancy
+	backgroundrgba = {0,0,0,0.3},
+	-- 11 stops supported for 10 text stops, red, green, blue values for each stop
+	redStops =  {0,0, 0, 0, 76/255, 230/255, 187/255, 1, 1, 204/255, 128/255},
+	greenStops = {51/255, 134/255, 179/255, 179/255, 230/255, 230/255, 153/255, 153/255, 102/255, 0, 0},
+	blueStops = {153/55, 179/255, 179/255, 0, 0, 0, 0, 51/255, 0, 0, 0 },
+	-- hard stops or gradient
+	useGradientStops = true	
 }
 
 --[[
@@ -77,12 +77,12 @@ function RGBDial:new (o)
 		if (o.useGradientStops==nil) then o.useGradientStops=RGBDial.useGradientStops end
 	end
 	-- create object if user does not provide one
-    o = o or RGBDial
-    setmetatable(o, self)
-    self.__index = self
-    --Cairo uses radians
-    self.radianConversion = math.pi/180
-    return o
+	o = o or RGBDial
+	setmetatable(o, self)
+	self.__index = self
+	--Cairo uses radians
+	self.radianConversion = math.pi/180
+	return o
 end
 
 --[[
@@ -99,15 +99,15 @@ end
 	Call this once the dial has been created.
 ]]
 function RGBDial:draw(cr, ctrx1, ctry1) 
-    -- Start of output
-    -- Set fonts, lines etc.
-    cairo_select_font_face (cr, self.fontFace, CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL)
-    cairo_set_font_size (cr, self.fontSize)
-    cairo_set_line_width (cr,self.lineWidth)
+	-- Start of output
+	-- Set fonts, lines etc.
+	cairo_select_font_face (cr, self.fontFace, CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL)
+	cairo_set_font_size (cr, self.fontSize)
+	cairo_set_line_width (cr,self.lineWidth)
 	--background
 	cairo_set_source_rgba (cr,self.backgroundrgba[1],self.backgroundrgba[2],self.backgroundrgba[3], self.backgroundrgba[4])
-    -- make background slighly bigger
-    local backgroundRadiusIncrement = 7
+	-- make background slighly bigger
+	local backgroundRadiusIncrement = 7
 	cairo_arc (cr,ctrx1,ctry1,self.radius + backgroundRadiusIncrement,0,(2*math.pi))
 	cairo_fill (cr)
 	-- line gradient.  Initial colour
@@ -121,12 +121,12 @@ function RGBDial:draw(cr, ctrx1, ctry1)
 		--the arc
 		cairo_set_line_width (cr,self.lineWidth)
 		local arcEnd = (27*(i+1)-225)*radianConversion
-        if (self.useGradientStops) then
-		    self:drawArc(arcStart, arcEnd,ctrx1, ctry1, self.redStops[i+1], self.redStops[i+2], self.greenStops[i+1], self.greenStops[i+2], self.blueStops[i+1], self.blueStops[i+2], self.alpha*2)
-        else
-            --no gradient, keep colour same
-            self:drawArc(arcStart, arcEnd,ctrx1, ctry1, self.redStops[i+1], self.redStops[i+1], self.greenStops[i+1], self.greenStops[i+1], self.blueStops[i+1], self.blueStops[i+1], self.alpha*2)
-        end 
+		if (self.useGradientStops) then
+			self:drawArc(arcStart, arcEnd,ctrx1, ctry1, self.redStops[i+1], self.redStops[i+2], self.greenStops[i+1], self.greenStops[i+2], self.blueStops[i+1], self.blueStops[i+2], self.alpha*2)
+		else
+			--no gradient, keep colour same
+			self:drawArc(arcStart, arcEnd,ctrx1, ctry1, self.redStops[i+1], self.redStops[i+1], self.greenStops[i+1], self.greenStops[i+1], self.blueStops[i+1], self.blueStops[i+1], self.alpha*2)
+		end 
 		arcStart = arcEnd
 	end
    
@@ -134,10 +134,10 @@ function RGBDial:draw(cr, ctrx1, ctry1)
 	arcStart = -225 * self.radianConversion
 	cairo_set_line_width (cr,1)
 	for i=0,9 do
-        Common.tick(cr, self.radius, self.tickLength, self.tickWidth, arcStart, ctrx1, ctry1, self.redStops[i+1],self.greenStops[i+1],self.blueStops[i+1],1.0, i*tickIncrement)
+		Common.tick(cr, self.radius, self.tickLength, self.tickWidth, arcStart, ctrx1, ctry1, self.redStops[i+1],self.greenStops[i+1],self.blueStops[i+1],1.0, i*tickIncrement)
 		local arcEnd = (27*(i+1)-225)*self.radianConversion	
 		arcStart = arcEnd
-        --print("tick")
+		--print("tick")
 	end
 	--end tick
 	Common.tick(cr,self.radius,self.tickLength,self.tickWidth,arcStart,ctrx1,ctry1,self.redStops[11],self.greenStops[11],self.blueStops[11],1.0,self.maxNum)
@@ -184,9 +184,9 @@ end
 
 	Returns: nil
 
-]]
+	]]
 function RGBDial:placeHandOnDialShade(cr, vecx, vecy, value, r, g, b, offset, ctrx, ctry)
-    return Common.placeHandOnDialShade(cr, vecx, vecy, value, r, g, b, offset, ctrx, ctry, self.maxNum, self.minNum)
+	return Common.placeHandOnDialShade(cr, vecx, vecy, value, r, g, b, offset, ctrx, ctry, self.maxNum, self.minNum)
 end
 
 -- END CLASS RGBDIal.
@@ -194,28 +194,28 @@ end
 -- Class HSVDial.
 -- Default values.
 HSVDial = {radius = 100,
-    -- lenght of tick
-    tickLength = 10,
-    tickWidth = 3,
-    -- Font face for text stops
-    fontFace = "Liberation Serif",
-    -- Font size for text stops
-    fontSize = 18,
-    -- Width of the arc
-    lineWidth = 14,
-    -- alpha parameter
-    alpha = 0.4,
-    -- largest number for the dial
-    maxNum = 100,
-    --smallest number for the dial
-    minNum = 0,
-    -- colour of background with alpha transparancy
-    backgroundrgba = {0,0,0,0.3},
-    --base colour to use for the darkest colour at end of dial, hue and saturation.  Volume is calculated.
-    baseColorHue = 220,
-    baseColorSaturation = 100,
-    startVolume = 82
-    
+	-- lenght of tick
+	tickLength = 10,
+	tickWidth = 3,
+	-- Font face for text stops
+	fontFace = "Liberation Serif",
+	-- Font size for text stops
+	fontSize = 18,
+	-- Width of the arc
+	lineWidth = 14,
+	-- alpha parameter
+	alpha = 0.4,
+	-- largest number for the dial
+	maxNum = 100,
+	--smallest number for the dial
+	minNum = 0,
+	-- colour of background with alpha transparancy
+	backgroundrgba = {0,0,0,0.3},
+	--base colour to use for the darkest colour at end of dial, hue and saturation.  Volume is calculated.
+	baseColorHue = 220,
+	baseColorSaturation = 100,
+	startVolume = 82
+	
 }
 
 --[[
@@ -242,12 +242,12 @@ function HSVDial:new(o)
 		if (o.startVolume==nil) then o.startVolume=HSVDial.startVolume end
 	end
 	-- create object if user does not provide one
-    o = o or HSVDial    
-    setmetatable(o, self)
-    self.__index = self
-    --Cairo uses radians
-    self.radianConversion = math.pi/180
-    return o
+	o = o or HSVDial	
+	setmetatable(o, self)
+	self.__index = self
+	--Cairo uses radians
+	self.radianConversion = math.pi/180
+	return o
 end
 
 --[[
@@ -270,7 +270,7 @@ function HSVDial:draw(cr, ctrx1, ctry1)
 	cairo_set_font_size (cr, self.fontSize)
 	cairo_set_line_width (cr,self.lineWidth)
 	cairo_set_source_rgba (cr,self.backgroundrgba[1], self.backgroundrgba[2], self.backgroundrgba[3], self.backgroundrgba[4])
-    local offset = 7
+	local offset = 7
 	cairo_arc (cr,ctrx1,ctry1,self.radius + offset,0,(2*math.pi))
 	cairo_fill (cr)
 	--gradient arch 270 degrees at 10degrees each starting at -225 degrees.
@@ -319,21 +319,21 @@ end
 
 ]]
 function HSVDial:placeHandOnDialShade(cr, vecx, vecy, value, r, g, b, offset, ctrx, ctry)
-    return  Common.placeHandOnDialShade(cr, vecx, vecy, value, r, g, b, offset, ctrx, ctry, self.maxNum, self.minNum)
+	return  Common.placeHandOnDialShade(cr, vecx, vecy, value, r, g, b, offset, ctrx, ctry, self.maxNum, self.minNum)
 end
 
 ----- END HSVDial Object.
 
 -- Shared Functions
 Common = {
-    --[[ 
+	--[[ 
 		Needles, these work for guages of radius 100, but can adjust them for larger.
 		The needle is centred on the x-axis, pointing right, this is 0 radians for cairo.
 
 		You can experiment with other shapes.  
 	]]
-    Needles = {
-        --[[
+	Needles = {
+		--[[
 			vectors contain number of points, then x or y co-ordinates.
 			The Large needle is defined at (x,y) co-ordinates {(-10,0) , (0,6), (102, 0), (0, -6)}
 
@@ -342,26 +342,26 @@ Common = {
 			
 			The needle can then be filled.
 		]]
-        Large = {
-            x = {4, -10, 0, 102, 0},
-            y = {4, 0, 6, 0, -6}
-        },
-    
-        Medium = { 
-            x = {4, -8, 0, 98, 0},
-            y = {4, 0, 5, 0, -5}
-        },
-    
-        Small = {
-            x = {4, -6, 0, 94, 0},
-            y = {4, 0, 4, 0, -4}
-        },
-    
-        Tiny = {
-            x = {4, -4, 0, 90, 0},
-            y = {4, 0, 3, 0, -3}
-        }
-    },
+		Large = {
+			x = {4, -10, 0, 102, 0},
+			y = {4, 0, 6, 0, -6}
+		},
+	
+		Medium = { 
+			x = {4, -8, 0, 98, 0},
+			y = {4, 0, 5, 0, -5}
+		},
+	
+		Small = {
+			x = {4, -6, 0, 94, 0},
+			y = {4, 0, 4, 0, -4}
+		},
+	
+		Tiny = {
+			x = {4, -4, 0, 90, 0},
+			y = {4, 0, 3, 0, -3}
+		}
+	},
 	radianConversion =  math.pi/180
 }
 
@@ -545,4 +545,4 @@ function Common.tick(cr, p_len,l_len,l_width, arcStart, ctrx1, ctry1, r, g, b, a
 	cairo_text_extents_t:destroy(extents)
 
 end
-    
+	

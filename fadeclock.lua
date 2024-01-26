@@ -66,7 +66,7 @@ function clock(cr, correctOffset, city, r, g, b)
 	-- hack to get just the millis.  use -6 for 0-9 seconds plus millis
 	tme = (socket.gettime()*1000)
 	x = string.sub(""..tme,-6) 
-    --the base y=40, height is 40 to 80, 1 sec = 40  pixels, we have millis
+	--the base y=40, height is 40 to 80, 1 sec = 40  pixels, we have millis
 	basey=correctOffset+40
 	
 	--seconds
@@ -80,7 +80,7 @@ function clock(cr, correctOffset, city, r, g, b)
 	--xoffset = xoffset - charoffset	
 	ymin=basey
 	sectens = seconds //10
-    --minutes
+	--minutes
 	minones = mins % 10
 	mintens = mins // 10
 	ymin = basey
@@ -176,7 +176,7 @@ function clock(cr, correctOffset, city, r, g, b)
 	--[[cairo_destroy(cr)
 	cairo_surface_destroy(cs)
 	cr=nil]]
-    return " "
+	return " "
 end 
 
 --r,g,b in 0-255
@@ -191,6 +191,6 @@ function conky_tz(tz, city, ymin, r, g, b)
 	cairo_destroy(cr)
 	cairo_surface_destroy(cs)
 	cr=nil
-    return " "
+	return " "
 	
 end

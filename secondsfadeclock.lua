@@ -66,7 +66,7 @@ function clock(cr, correctOffset, city)
 	-- hack to get just the millis.
 	tme = (socket.gettime()*1000)
 	x = string.sub(""..tme,-5) 
-    --the base y=40, height is 40 to 80, 1 sec = 40  pixels, we have millis
+	--the base y=40, height is 40 to 80, 1 sec = 40  pixels, we have millis
 	basey=correctOffset+40
 	--y = basey - (tonumber(x)*0.04)
 	
@@ -97,13 +97,13 @@ function clock(cr, correctOffset, city)
 	else 
 		cairo_show_text (cr, "")
 	end
-    --minutes
+	--minutes
 	minones = mins % 10
 	mintens = mins // 10
 	ymin = basey
 	ymin10 = basey
 	-- x moves 40, but the colon has moved 11 (11+29)
-    xoffset = xoffset - charoffset
+	xoffset = xoffset - charoffset
 	if (sectens == 5 and secones == 9 ) then
 		minonesnext = (minones + 1) % 10
 		fadeNumber(cr, xoffset, ymin, minones, minonesnext, alpha)
@@ -185,7 +185,7 @@ function clock(cr, correctOffset, city)
 	end	
 	cairo_show_text (cr, city)
 
-    return " "
+	return " "
 end 
 
 function conky_tz(tz, city, ymin)
@@ -203,6 +203,6 @@ function conky_tz(tz, city, ymin)
 	cairo_destroy(cr)
 	cairo_surface_destroy(cs)
 	cr=nil
-    return " "
+	return " "
 	
 end

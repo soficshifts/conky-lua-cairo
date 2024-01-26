@@ -112,7 +112,7 @@ function conky_clock(ctrx, ctry)
 	cairo_destroy(cr)
 	cairo_surface_destroy(cs)
 	cr=nil
-    return " "
+	return " "
 	
 end
 
@@ -176,7 +176,7 @@ function conky_clock_test(ctrx, ctry, h, m, s)
 	cairo_destroy(cr)
 	cairo_surface_destroy(cs)
 	cr=nil
-    return " "
+	return " "
 	
 end
 
@@ -216,7 +216,7 @@ function clock_dial(cr, p_len, alpha, ctrx1, ctry1, is24hr)
 	cairo_select_font_face (cr, "Liberation Serif", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL)
 	--colour of fill circle
 	cairo_set_source_rgba (cr,0,102/255,1,0.2)
-    -- circle is 7 pixels wider
+	-- circle is 7 pixels wider
 	offset=7
 	cairo_arc (cr,ctrx1,ctry1,(p_len+offset),0,(2*math.pi))
 	cairo_fill (cr)
@@ -228,7 +228,7 @@ function clock_dial(cr, p_len, alpha, ctrx1, ctry1, is24hr)
 	local hradvance=1
 	local width = 2
 	local longline=15
-    --Need a color arc, increase alpha
+	--Need a color arc, increase alpha
 	if (is24hr) then
 		cairo_set_source_rgba (cr,r_green,g_green,b_green,1.5*alpha)
 		cairo_set_font_size (cr, 12)

@@ -82,7 +82,7 @@ function conky_clock(ctrx, ctry)
 	r_blue=0
 	g_blue=102/255
 	b_blue=1
-    --and so on
+	--and so on
 end
 ```
 
@@ -119,7 +119,7 @@ function conky_clock(correctOffset)
 	cairo_set_font_size (cr, 55)
 	cairo_set_source_rgba (cr,26/255,1,26/255,1)
 
-    --more deleted code
+	--more deleted code
 end
 ```
 

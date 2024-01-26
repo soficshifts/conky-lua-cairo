@@ -108,7 +108,7 @@ function conky_clock(ctrx, ctry, scale)
 	cairo_destroy(cr)
 	cairo_surface_destroy(cs)
 	cr=nil
-    return " "
+	return " "
 	
 end
 

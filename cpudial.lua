@@ -43,26 +43,26 @@ toRadians=math.pi/180
 	For further description, you can check the comments in Common.Needles dials.lua script
 ]]
 Needles = {
-    --vectors contain number of points at first index, then the x or y co-ordinates
-    Large = {
-        x = {4, -10, 0, 102, 0},
-        y = {4, 0, 6, 0, -6}
-    },
+	--vectors contain number of points at first index, then the x or y co-ordinates
+	Large = {
+		x = {4, -10, 0, 102, 0},
+		y = {4, 0, 6, 0, -6}
+	},
 
-    Medium = { 
-        x = {4, -8, 0, 98, 0},
-        y = {4, 0, 5, 0, -5}
-    },
+	Medium = { 
+		x = {4, -8, 0, 98, 0},
+		y = {4, 0, 5, 0, -5}
+	},
 
-    Small = {
-        x = {4, -6, 0, 94, 0},
-        y = {4, 0, 4, 0, -4}
-    },
+	Small = {
+		x = {4, -6, 0, 94, 0},
+		y = {4, 0, 4, 0, -4}
+	},
 
-    Tiny = {
-        x = {4, -4, 0, 90, 0},
-        y = {4, 0, 3, 0, -3}
-    }
+	Tiny = {
+		x = {4, -4, 0, 90, 0},
+		y = {4, 0, 3, 0, -3}
+	}
 }
 
 function conky_init(ctrx1, ctry1)

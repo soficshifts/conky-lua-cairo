@@ -28,7 +28,7 @@ For all dials, the text placement of readings is up to you (but the demo script 
 
 [cpu.conf](./cpu.conf) is a Conky configuration that demos the two dials, however, they may be a bit resource hungry with such fast refresh rates.  You can decide for yourself.  My use case was environmental data (obvious from the screenshots) that only refreshes every minute.
 
-This will show the usage of CPU0 and CPU1 (so you CPU should be at least dual core). along with memory used.
+This will show the usage of CPU0 and CPU1 (so you CPU should be at least dual core), along with memory used.
 
 *Make sure you change `cpu.conf` conky file's `lua_load` property to the absolute path to the lua script.*
 
