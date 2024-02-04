@@ -411,7 +411,8 @@ function Common.placeHandOnDialShade(cr, vecx, vecy, value, r, g, b, shadeOffset
 	if (value > max) then value = max end
 	if (value < min) then value = min end
 	--caculate angle, the min value is at -225 degrees and the dial arc is 270 degrees
-	local angle = (-225+(value*270/(max-min)))*Common.radianConversion
+	local portion = (value - min)
+	local angle = (-225+(portion*270/(max-min)))*Common.radianConversion
 	local sin = math.sin(angle)
 	local cos = math.cos(angle)
 	
