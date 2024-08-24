@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ]]
 require'cairo'
+require'cairo_xlib'
 socket = require'socket'
 
 days={"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"}

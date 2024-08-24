@@ -29,6 +29,7 @@ SOFTWARE.
 ]]
 package.path = "./?.lua"
 require'cairo'
+require'cairo_xlib'
 require'dials'
 
 -- Remember Ciaro Trigonometry is in Radians.
